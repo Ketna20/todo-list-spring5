@@ -1,6 +1,6 @@
-# todo-list-spring5
+To Do List Web Application
 
-This is a web application for To Do List.
+
 It uses the following technologies:
 Spring 5,
 Maven,
