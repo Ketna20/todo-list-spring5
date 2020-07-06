@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import spring.mvc.service.DemoService;
 
@@ -31,10 +32,11 @@ public class DemoController {
     }
 
     //returns prefix + name + suffix
+    // http://localhost:8080/todo-list/welcome?user=kk
     @GetMapping("welcome")
-    public String welcome(Model model) {
-        model.addAttribute("helloMessage", demoService.getHelloMessage("kk"));
-        log.info("Model= {} ", model);
+    public String welcome(@RequestParam String user, @RequestParam int age, Model model) {
+        model.addAttribute("helloMessage", demoService.getHelloMessage(user));
+        model.addAttribute("age", age);
         // /WEB_INF/view/welcome.jsp
         return "welcome";  // returns view name
     }
